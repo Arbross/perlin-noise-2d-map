@@ -26,67 +26,15 @@ ostream& color(ostream& text) {
 	return text;
 }
 
-void SetColor(int col)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), col);
-}
-
-void Size_Console(int x, int y)
-{
-	HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD crd = { x, y };
-	SMALL_RECT src = { 0, 0, crd.X , crd.Y };
-	SetConsoleWindowInfo(out_handle, true, &src);
-	SetConsoleScreenBufferSize(out_handle, crd);
-}
-
-void SetPos(int x, int y)
-{
-	COORD c;
-	c.X = x;
-	c.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
-}
-
-int isMenu(string menu_items[], int size)
-{
-	int key = 0, code = 0;
-
-	do {
-		key = (key + size) % size;
-		for (int i = 0; i < size; i++)
-		{
-			SetPos(30, i);
-			if (key == i)
-			{
-				cout << " "; SetColor(8); cout << menu_items[i]; SetColor(3); cout << " " << endl; SetColor(15);
-			}
-			else
-			{
-				cout << " "; cout << menu_items[i]; cout << " " << endl;
-			}
-		}
-		code = _getch();
-		if (code == 224)
-		{
-			code = _getch();
-			if (code == 80)
-			{
-				key++;
-			}
-			if (code == 72)
-			{
-				key--;
-			}
-		}
-	} while (code != 13);
-	return key;
-}
-
 class ShowField
 {
 public:
 	ShowField();
+
+	void SetColor(int col);
+	void Size_Console(int x, int y);
+	void SetPos(int x, int y);
+	int isMenu(string menu_items[], int size);
 
 	void fill();
 	void print() const;
@@ -118,171 +66,6 @@ private:
 	size_t sizeOfMap;
 	string value;
 };
-
-class Menu
-{
-public:
-	void showMenu();
-private:
-	ShowField show;
-};
-
-void Menu::showMenu()
-{
-	while (true)
-	{
-		string menu_items[6];
-
-		menu_items[0] = "1 - Create map";
-		menu_items[1] = "2 - Save map";
-		menu_items[2] = "3 - Load map";
-		menu_items[3] = "4 - Set value";
-		menu_items[4] = "5 - Get value";
-		menu_items[5] = "6 - Exit";
-		int tmp = isMenu(menu_items, 6);
-		system("cls");
-
-		switch (tmp)
-		{
-		case 0: {
-			system("cls");
-			show.clear();
-			show.fill();
-			show.print();
-		} break;
-		case 1: {
-			system("cls");
-			show.clear();
-			show.fill();
-			show.print();
-
-			string path = ""; cout << "Enter the path : "; cin >> path;
-			ofstream fin(path, fstream::app);
-
-			if (!fin.is_open())
-			{
-				cerr << "Open of file error.\n";
-				exit(0);
-			}
-			else {
-				SetConsoleCP(1251);
-				fin << show.getValue();
-				SetConsoleCP(866);
-			}
-		} break;
-		case 2: {
-			string path = ""; cout << "Enter the path : "; getline(cin, path);
-			ifstream fin;
-			fin.open(path);
-
-			if (!fin.is_open())
-			{
-				cerr << "Open of file error.\n"; exit(0);
-			}
-			else {
-				char symbol;
-				int i = 0;
-				while (fin.get(symbol))
-				{
-					int sqrtMap = sqrt(show.getSizeOfMap());
-					if (i % sqrtMap == 0) { cout << endl; }
-
-					if (symbol == '0')
-					{
-						cout << color<9, 0> << "0 " << color;
-					}
-					else if (symbol == '1')
-					{
-						cout << color<11, 0> << "1 " << color;
-					}
-					else if (symbol == '2')
-					{
-						cout << color<10, 0> << "2 " << color;
-					}
-					else if (symbol == '3')
-					{
-						cout << color<2, 0> << "3 " << color;
-					}
-					else if (symbol == '4')
-					{
-						cout << color<8, 0> << "4 " << color;
-					}
-					else {
-						cout << color<4, 0> << "x " << color;
-						throw InvalidSymbolException("Invalid symbol exeption.");
-					}
-					++i;
-				}
-			}
-		} break;
-		case 3: {
-			system("cls");
-			string menu_items_d[2];
-			int number = 0;
-
-			menu_items_d[0] = "Structure";
-			menu_items_d[1] = "Nature";
-			number = isMenu(menu_items_d, 2);
-
-			switch (number)
-			{
-			case 0: {
-				int index = 0;
-				cout << "Enter index : "; cin >> index;
-
-				show.coutEndl(5);
-				show.setStructure(index);
-			} break;
-			case 1: {
-				int index = 0;
-				cout << "Enter index : "; cin >> index;
-
-				show.coutEndl(5);
-				show.setBiome(index);
-			} break;
-			default: throw InvalidSwitchException("Invalid switch exeprion.");
-				break;
-			}
-		} break;
-		case 4: {
-			system("cls");
-
-			string menu_items_d[2];
-			int number = 0;
-
-			menu_items_d[0] = "Structure";
-			menu_items_d[1] = "Nature";
-			number = isMenu(menu_items_d, 2);
-
-			switch (number)
-			{
-			case 0: {
-				int index = 0;
-				cout << "Enter index : "; cin >> index;
-
-				show.coutEndl(5);
-				show.getStructure(index);
-			} break;
-			case 1: {
-				int index = 0;
-				cout << "Enter index : "; cin >> index;
-
-				show.coutEndl(5);
-				show.getBiome(index);
-			} break;
-			default: throw InvalidSwitchException("Invalid switch exeprion.");
-				break;
-			}
-		} break;
-		case 5: {
-			cout << "Bye!" << endl;
-			exit(0);
-		} break;
-		default: throw InvalidSwitchException("Invalid switch exeprion.");
-			break;
-		}
-	}
-}
 
 inline void ShowField::print() const
 {
@@ -492,6 +275,63 @@ inline ShowField::ShowField()
 {
 	cout << "Enter size of map : "; cin >> sizeOfMap;
 	value.resize(sizeOfMap);
+}
+
+inline void ShowField::SetColor(int col)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), col);
+}
+
+inline void ShowField::Size_Console(int x, int y)
+{
+	HANDLE out_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD crd = { x, y };
+	SMALL_RECT src = { 0, 0, crd.X , crd.Y };
+	SetConsoleWindowInfo(out_handle, true, &src);
+	SetConsoleScreenBufferSize(out_handle, crd);
+}
+
+inline void ShowField::SetPos(int x, int y)
+{
+	COORD c;
+	c.X = x;
+	c.Y = y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
+}
+
+inline int ShowField::isMenu(string menu_items[], int size)
+{
+	int key = 0, code = 0;
+
+	do {
+		key = (key + size) % size;
+		for (int i = 0; i < size; i++)
+		{
+			SetPos(30, i);
+			if (key == i)
+			{
+				cout << " "; SetColor(8); cout << menu_items[i]; SetColor(3); cout << " " << endl; SetColor(15);
+			}
+			else
+			{
+				cout << " "; cout << menu_items[i]; cout << " " << endl;
+			}
+		}
+		code = _getch();
+		if (code == 224)
+		{
+			code = _getch();
+			if (code == 80)
+			{
+				key++;
+			}
+			if (code == 72)
+			{
+				key--;
+			}
+		}
+	} while (code != 13);
+	return key;
 }
 
 inline void ShowField::fill()

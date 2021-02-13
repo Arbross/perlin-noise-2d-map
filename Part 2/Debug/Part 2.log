@@ -6,12 +6,12 @@ C:\Users\victor\source\repos\Part 2\Part 2\PerlinNoise.h(51,11): warning C4244: 
 C:\Users\victor\source\repos\Part 2\Part 2\PerlinNoise.h(52,11): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
 C:\Users\victor\source\repos\Part 2\Part 2\PerlinNoise.h(68,11): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
 C:\Users\victor\source\repos\Part 2\Part 2\PerlinNoise.h(69,11): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(37,16): warning C4838: Преобразование из "int" в "SHORT" требует сужающего преобразования.
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(37,19): warning C4838: Преобразование из "int" в "SHORT" требует сужающего преобразования.
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(187,18): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(300,18): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(501,12): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(502,12): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(83,18): warning C4244: инициализация: преобразование "double" в "size_t", возможна потеря данных
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(288,16): warning C4838: Преобразование из "int" в "SHORT" требует сужающего преобразования.
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(288,19): warning C4838: Преобразование из "int" в "SHORT" требует сужающего преобразования.
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(341,12): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(342,12): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+C:\Users\victor\source\repos\Part 2\Part 2\Menu.h(71,18): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\memory(2833,56): warning C4244: аргумент: преобразование "int" в "const float", возможна потеря данных
-C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(546): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::unique_ptr<LightForest,std::default_delete<LightForest>> std::make_unique<LightForest,int&,0>(int &)"
+C:\Users\victor\source\repos\Part 2\Part 2\ShowField.h(386): message : выполняется компиляция ссылки на экземпляр шаблон функции "std::unique_ptr<LightForest,std::default_delete<LightForest>> std::make_unique<LightForest,int&,0>(int &)"
   Part 2.vcxproj -> C:\Users\victor\source\repos\Part 2\Debug\Part 2.exe

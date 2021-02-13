@@ -1,8 +1,6 @@
 ﻿#include <iostream>
 #include <ctime>
-#include <fstream>
-#include <Windows.h>
-#include "ShowField.h"
+#include "Menu.h"
 #include "Exeptions.h"
 using namespace std;
 

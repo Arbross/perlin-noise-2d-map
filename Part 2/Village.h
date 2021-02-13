@@ -7,27 +7,16 @@ using namespace std;
 class Village : public Structure
 {
 public:
-	Village(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0, const size_t& population = 0, const string& owner = "No owner");
+	Village(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0, const size_t& population = 0, const string& owner = "No owner", const int& id = 0);
 
+	// Custom print
 	virtual void print() const override;
-private:
-	float value;
-
-	string name;
-	size_t age;
-	size_t population;
-	string owner;
-
-	int id;
-	enum class Type { CASTLE, VILLAGE, TOWN };
-	Type type;
 };
 
-inline Village::Village(const float& value, const string& name, const size_t& age, const size_t& population, const string& owner)
-	: Structure(value, name, age, population, owner)
+inline Village::Village(const float& value, const string& name, const size_t& age, const size_t& population, const string& owner, const int& id)
+	: Structure(value, name, age, population, owner, id)
 {
-	type = Type::VILLAGE;
-	id = 1;
+	setID(id);
 }
 
 inline void Village::print() const
@@ -37,5 +26,5 @@ inline void Village::print() const
 	cout << "Age : " << getAge() << endl;
 	cout << "Owner : " << getOwner() << endl;
 	cout << "Population : " << getPopulation() << endl;
-	cout << "Type : " << id << endl;
+	cout << "Type : " << getID() << endl;
 }

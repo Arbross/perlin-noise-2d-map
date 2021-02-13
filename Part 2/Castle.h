@@ -7,20 +7,16 @@ using namespace std;
 class Castle : public Structure
 {
 public:
-	Castle(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0, const size_t& population = 0, const string& owner = "No owner");
+	Castle(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0, const size_t& population = 0, const string& owner = "No owner", const int& id = 0);
 
+	// Custom print
 	virtual void print() const override;
-private:
-	int id;
-	enum class Type { CASTLE, VILLAGE, TOWN };
-	Type type;
 };
 
-inline Castle::Castle(const float& value, const string& name, const size_t& age, const size_t& population, const string& owner)
-	: Structure(value, name, age, population, owner)
+inline Castle::Castle(const float& value, const string& name, const size_t& age, const size_t& population, const string& owner, const int& id)
+	: Structure(value, name, age, population, owner, id)
 {
-	type = Type::CASTLE;
-	id = 0;
+	setID(id);
 }
 
 inline void Castle::print() const
@@ -30,5 +26,5 @@ inline void Castle::print() const
 	cout << "Age : " << getAge() << endl;
 	cout << "Owner : " << getOwner() << endl;
 	cout << "Population : " << getPopulation() << endl;
-	cout << "Type : " << id << endl;
+	cout << "Type : " << getID() << endl;
 }

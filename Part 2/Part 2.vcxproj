@@ -148,6 +148,7 @@
     <ClInclude Include="Exeptions.h" />
     <ClInclude Include="Lake.h" />
     <ClInclude Include="LightForest.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Mountain.h" />
     <ClInclude Include="PerlinNoise.h" />
     <ClInclude Include="Plain.h" />

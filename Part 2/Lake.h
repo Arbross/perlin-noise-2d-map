@@ -7,20 +7,16 @@ using namespace std;
 class Lake : public Biome
 {
 public:
-	Lake(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0);
+	Lake(const float& value = 0.0, const string& name = "Noname", const size_t& age = 0, const int& id = 0);
 
+	// Custom print
 	virtual void print() const override;
-private:
-	int id;
-	enum class Type { FOREST, WATER, PLAIN, MOUNTAIN };
-	Type type;
 };
 
-inline Lake::Lake(const float& value, const string& name, const size_t& age)
-	: Biome(value, name, age)
+inline Lake::Lake(const float& value, const string& name, const size_t& age, const int& id)
+	: Biome(value, name, age, id)
 {
-	type = Type::WATER;
-	id = 1;
+	setID(id);
 }
 
 inline void Lake::print() const
@@ -28,5 +24,5 @@ inline void Lake::print() const
 	cout << "Value : " << getValue() << endl;
 	cout << "Name : " << getName() << endl;
 	cout << "Age : " << getAge() << endl;
-	cout << "Type : " << id << endl;
+	cout << "Type : " << getID() << endl;
 }
