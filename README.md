@@ -1,31 +1,29 @@
-# courseWork-C-2-
+# Perlin Noise-Based 2D Map Generation using OOP: Creating a Dynamic World with Biomes and Structures
 
-Курсова робота по С++(2 курс). Шум Перліна та генерація 2D мапи за його допомогою, з використанням ООП
+### Perlin Noise and 2D map generation using object-oriented programming (OOP).
 
-Світ(проект) складається з біомів(частинок світу(чанків)). Кожен чанк складається з класу, що поділяється на два типи Structure, Biome. Кожен тип містить в собі підтип (Structure(Town, Castle, Village), Biome(DarkForest, LightForest, Plain, Lake, Mountain)). Кожен клас містить в собі певні поля відповідно до певних дій, що можуть робити методи в ньому.
+The project revolves around creating a world consisting of various biomes, which are essentially chunks of the world. Each chunk is represented by a class that can be categorized into two types: Structure and Biome. The Structure type further subclasses into Town, Castle, and Village, while the Biome type encompasses DarkForest, LightForest, Plain, Lake, and Mountain. Each class contains specific fields corresponding to their respective actions, which are performed through their methods.
 
-Class PerlinNoise - генерація Шуму Перліна за допомогою якого генерується весь світ.
-Class ShowField - відображення всіх меню та інформації до консолі.
-Class Menu - головне меню. Містить  собі поля : Create map, Save map (до файлу), Load map, Set value(редагувати поля кожного класу), Get value(отримання значень полів), Exit.
-Class Structure, Biome - абстрактні класи щодо кожного чанку (Structure (міста, замки, села) генеруються з шансом 10%, а кожна з них з шансом ~30%). Від цих класів наявні їх наслідувальні класи, кожен з яких описує свій біом.
+The PerlinNoise class is responsible for generating Perlin Noise, which serves as the basis for creating the entire world. The ShowField class handles the display of menus and information on the console. The Menu class represents the main menu, offering options such as creating a map, saving the map to a file, loading a map, setting field values, getting field values, and exiting the program.
 
- - В проекті реалізовані винятки щодо помилок, замість всіх звичайних масивів використовуються вектори з stl, масиви класів реалізовані через unique_ptr. 
+The Structure and Biome classes are abstract, providing a foundation for defining individual chunks. Structures are generated with a 10% chance, and each structure subtype has approximately a 30% chance of occurrence. Biomes, on the other hand, represent different natural environments.
 
- - Розміри полів можна встановлювати динамічно при запуску програми (бажано вводити розмір що має свій цілий корінь для знучного вигляду мапи та її чанків).
+The project incorporates exception handling to handle errors effectively. Instead of conventional arrays, the project utilizes vectors from the Standard Template Library (STL). Additionally, arrays of classes are implemented using unique_ptr.
 
- - Також мапу можна зберігати до файлу та вигружати відповідно (що вказано в меню).
- 
- Поля Biome(main for getters) : 
-  - string name
-  - int age
-  
- Поля Structure(main for getters) : 
-  - string name
-  - int age
-  - string owner
-  - int population
+The size of the fields can be dynamically set during program execution, with a preference for sizes that have an integer square root to ensure an aesthetically pleasing map and its chunks.
 
-Трошки про Шум Перліна : 
-Шум Перлина - це примітив процедурних текстур, що належить до градієнтних шумів. Художники використовують його, щоб зробити комп'ютерну графіку реалістичнішою. Результат алгоритму є псевдовипадковим, але всі візуальні деталі мають однаковий розмір. Завдяки цьому алгоритм має широке застосування; масштабовані копії шуму Перлина можна підставити у математичний вираз, що дозволить створити різноманітні процедурні текстури. Такі текстури часто використовують у CGI щоб зробити більш реалістичним вигляд комп'ютерних ефектів, таких як вогонь, дим чи хмари, імітуючи випадковий характер вигляду природних явищ. Також шум Перлина використовують за умов дуже обмеженої пам'яті, наприклад у демо-сценах, чи у графіці реального часу в іграх.
+Furthermore, the map can be saved to a file and loaded as desired, allowing for persistence of the generated world.
 
-Отже, всі права підтверджені та за проект(що є курсовою) менше 12 балів поставити неможливо! (Я сидів писав README ;D)
+The Biome class contains the following main fields (used for getters):
+
+ - name (string)
+ - age (int)
+
+The Structure class contains the following main fields (used for getters):
+
+ - name (string)
+ - age (int)
+ - owner (string)
+ - population (int)
+
+Perlin Noise, a type of procedural texture, is a key component of the project. It is widely used by artists to add realism to computer graphics. The algorithm generates pseudo-random results, ensuring that all visual details have a consistent size. Its versatility lies in the ability to scale and apply Perlin noise to mathematical expressions, facilitating the creation of diverse procedural textures. This technique is particularly useful for achieving realistic computer-generated effects such as fire, smoke, clouds, or other natural phenomena. Perlin noise also proves valuable in scenarios with limited memory, such as demo scenes or real-time graphics in games.
